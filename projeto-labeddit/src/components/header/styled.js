@@ -6,7 +6,8 @@ export const HeaderStyled = styled.div`
     background-color:#EDEDED;
     display:flex;
     flex-direction:row;
-    justify-content:space-between;
+    align-items:center;
+    justify-content:center;
 
 .all-header{
     display:flex;
@@ -16,6 +17,7 @@ export const HeaderStyled = styled.div`
     padding:36px;
     color:#4088CB;
 }
+
 .image{
     width:35%;
     display:flex;

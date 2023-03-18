@@ -7,8 +7,8 @@ export const HomeStyled = styled.div`
     justify-content:center;
     align-items:center;
     flex-direction:column;
-    height:100vh;
-    /* width:100vw; */
+    /* height:100vh;
+    width:100vw; */
     background-color:#ffffff;
 .logo{
     display:flex;
@@ -16,10 +16,15 @@ export const HomeStyled = styled.div`
     margin-bottom:8vh;
     justify-content:center;
     align-items:center;
-
+    width:100%;
+    font-family:sans-serif;
+        
+        @media (max-width: 590px){
+             width: 392px;
+         }
     >img{
         height:20vh ;
-        width:24vh ;
+        width:10vw ;
     }
 }
 
@@ -27,45 +32,70 @@ export const HomeStyled = styled.div`
     display:flex;
     flex-direction:column;
     justify-content:center;
-    
+    align-items:center;
+   
    
     >button{
+      
         border-radius:4vh;
-        width:54vh;
+        width:26vw;
         height:8vh;
         cursor:pointer;       
         font-weight:bold;
         font-size: 18px;
         font-family:sans-serif;
+        
+        @media (max-width: 590px){
+             width: 392px;
+         }
+      
     }
+}
+button{
+        border-radius:4vh;
+        width:26vw;
+        height:8vh;
+        cursor:pointer;       
+        font-weight:bold;
+        font-size: 18px;
+        font-family:sans-serif;
+        @media (max-width: 590px){
+             width: 392px;
+         }
 }
 .continuar{
     background: linear-gradient(90deg, #FF6489, #F9B24E);
     color:#FFFFFF;
     border-style:none;
+    margin-top:16px;
 }
+
 .conta{
-    background-color:#FFFFFF;
+background-color:#FFFFFF;
    border:2px solid #FE7E02;
    color:#FE7E02;
-   margin-bottom:50px;
-   
+ 
 }
 img{
-        margin-top:3vh;
-        margin-bottom:3vh;
+    margin-top:2vh;
+    margin-bottom:1vh;
+    width:26vw;
 }
     .inputs{
     display:flex;
     flex-direction:column;
-    margin-bottom:4vh;
-
+    align-items:center;
+    justify-content:center;
+    margin-bottom:1vh;
+    @media (max-width: 590px){
+             width: 392px;
+         }
     >input{
-        Width:54vh;
-        Height:8vh;
+        width:26vw;
+        height:8vh;
         margin:1vh;
         padding-left:4px;
-
+       
     }
 }
 }`

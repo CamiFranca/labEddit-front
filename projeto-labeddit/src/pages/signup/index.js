@@ -1,15 +1,50 @@
-import react, {useState} from "react"
 import { SignupStyled } from "./styled"
+import { useState, useEffect } from "react"
+import { goToLoginPage, goToPostsPage } from "../../routes/coordinator"
+import { useNavigate } from 'react-router-dom'
+import axios from "axios";
+import { BASE_URL } from "../../constants"
+
+
 
 export const SignupPage = () => {
 
-    const [senha, setSenha] = useState("")
-    const [email,setEmail] = useState("")
-    const [apelido,setApelido] = useState("")
 
-const sendForm =()=>{
-    
-}
+
+    const navigate = useNavigate()
+
+
+    const [apelido, setApelido] = useState("")
+    const [email, setEmail] = useState("")
+    const [senha, setSenha] = useState("")
+    const [token, setToken] = useState("")
+
+    useEffect(() => {
+
+        signup()
+
+    }, [])
+
+    const input = {
+        nickName: apelido,
+        email: email,
+        senha: senha
+
+    }
+    const signup = () => {
+
+        axios.post(`${BASE_URL}/users/login`, input)
+
+            .then((res) => {
+                setToken(res.data.token)
+                localStorage.setItem("token", token)
+                token ? goToPostsPage(navigate) : goToLoginPage(navigate)
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+    }
+
     return (
         <SignupStyled>
             <div className="formLoginPage">
@@ -18,21 +53,21 @@ const sendForm =()=>{
 
                 <form className="form">
                     <div className="inputs">
-                        <input name="apelido" 
-                        type="text" 
-                        value={apelido}
-                        placeholder="Apelido"
-                        onChange={(e)=>setApelido(e.target.value)} />
+                        <input name="apelido"
+                            type="text"
+                            value={apelido}
+                            placeholder="Apelido"
+                            onChange={(e) => setApelido(e.target.value)} />
                         <input name="senha"
-                        type="text" 
-                        value={senha}
-                        placeholder="E-mail"
-                        onChange={(e)=>setSenha(e.target.value)} />
+                            type="text"
+                            value={senha}
+                            placeholder="E-mail"
+                            onChange={(e) => setSenha(e.target.value)} />
                         <input name="email"
-                        type="text"
-                        value={email}
-                        placeholder="Senha"
-                        onChange={(e)=>setEmail(e.target.value)} />
+                            type="text"
+                            value={email}
+                            placeholder="Senha"
+                            onChange={(e) => setEmail(e.target.value)} />
 
                     </div>
                     <div className="contract">

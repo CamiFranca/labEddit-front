@@ -1,32 +1,86 @@
 import line from "../../images/line.png"
 import brandLabeddit from "../../images/brandLabeddit.png"
-import btnContinuar from "../../images/btnContinuar.png"
 import { HomeStyled } from "./styled"
-import react,{useState} from "react"
+import { useState, useEffect } from "react"
+import { goToLoginPage, goToPostsPage, goToSignupPage } from "../../routes/coordinator"
+import { useNavigate } from 'react-router-dom'
+import axios from "axios";
+import { BASE_URL } from "../../constants"
+// import { useLocation } from 'react-router-dom'
+
 
 export const LoginPage = () => {
 
     const [emailLogin, setEmailLogin] = useState('')
     const [senhaLogin, setSenhaLogin] = useState('')
+    const [token, setToken] = useState('')
+
+    const navigate = useNavigate()
+    // const location = useLocation()
+
+    useEffect(() => {
+
+        login()
+
+    }, [])
+
+    const input = {
+        email: emailLogin,
+        passaword: senhaLogin
+    }
+
+    const login = () => {
+
+        axios.post(`${BASE_URL}/users/login`, input)
+
+            .then((res) => {
+                setToken(res.data.token)
+                localStorage.setItem("token", token)
+                token ? goToPostsPage(navigate) : goToLoginPage(navigate)
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+
+    }
+
     return (
 
         <HomeStyled>
             <div className="formLoginPage">
                 <div className="logo">
-                    <img src={brandLabeddit} alt></img>
+                    <img src={brandLabeddit} alt="brand labeddit"></img>
                     <span>O projeto de rede social da Labenu</span>
                 </div>
 
                 <form className="form">
                     <div className="inputs">
-                        <input name="email" type="text" placeholder="E-mail" onChange={(e)=>setEmailLogin(e.target.value)} />
-                        <input name="senha" type="text" placeholder="Senha" onChange={(e)=>setSenhaLogin(e.target.ariaValueMax)}/>
+                        <input name="email"
+                            type="text"
+                            placeholder="E-mail"
+                            value={emailLogin}
+                            onChange={(e) => setEmailLogin(e.target.value)} />
+                        <input name="senha"
+                            type="text"
+                            placeholder="Senha"
+                            value={senhaLogin}
+                            onChange={(e) => setSenhaLogin(e.target.ariaValueMax)} />
+                        <button className="continuar"
+                            type="button"
+                            onClick={() =>LoginPage()}
+                            value="Continuar">Continuar
+                        </button>
+                        <img src={line} alt="line"></img>
                     </div>
-
-                    <button className="continuar" type="submit" value="Continuar">Continuar</button>
-                    <img src={line} alt="line"></img>
-                    <button className="conta" type="submit" value="CrieUmaConta">Crie uma conta</button>
+                    <button className="conta"
+                        type="button"
+                        value="CrieUmaConta"
+                        onClick={() => goToSignupPage(navigate)}>Crie uma conta
+                    </button>
                 </form>
+                <div className="end-button">
+
+                </div>
             </div>
         </HomeStyled>
     )
