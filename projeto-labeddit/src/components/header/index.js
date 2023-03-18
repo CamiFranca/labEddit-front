@@ -14,8 +14,14 @@ export const Header = () => {
     const buttonHeader = () => {
 
         switch (local.pathname) {
+            case "/":
+                return
+                <div className="void">
+                    
+                </div>
             case "/signup":
                 return (
+              
                     <div className='all-header'>
                         <div className='void'>
 
@@ -30,10 +36,12 @@ export const Header = () => {
                         </div>
 
                     </div>
+              
                 )
 
                 case "/posts/id":
                     return (
+                        
                         <div className='all-header'>
                             <div className='void'>
     
