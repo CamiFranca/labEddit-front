@@ -39,7 +39,7 @@ export const Header = () => {
               
                 )
 
-                case "/posts/id":
+                case "/posts":
                     return (
                         
                         <div className='all-header'>
