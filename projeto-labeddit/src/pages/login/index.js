@@ -18,16 +18,16 @@ export const LoginPage = () => {
     const navigate = useNavigate()
     // const location = useLocation()
 
+    const input = {
+        "email": emailLogin,
+        "password": senhaLogin
+    }
+
     useEffect(() => {
 
-        login()
 
     }, [])
 
-    const input = {
-        email: emailLogin,
-        passaword: senhaLogin
-    }
 
     const login = () => {
 
@@ -35,13 +35,18 @@ export const LoginPage = () => {
 
             .then((res) => {
                 setToken(res.data.token)
-                localStorage.setItem("token", token)
+                window.localStorage.setItem("token", res.data.token)
                 token ? goToPostsPage(navigate) : goToLoginPage(navigate)
             })
             .catch((err) => {
                 console.log(err)
             })
 
+    }
+
+    const handleSubmit = (event) => {
+        event.preventDefault()
+        login()
     }
 
     return (
@@ -53,10 +58,10 @@ export const LoginPage = () => {
                     <span>O projeto de rede social da Labenu</span>
                 </div>
 
-                <form className="form">
+                <form className="form" onSubmit={handleSubmit}>
                     <div className="inputs">
                         <input name="email"
-                            type="text"
+                            type="email"
                             placeholder="E-mail"
                             value={emailLogin}
                             onChange={(e) => setEmailLogin(e.target.value)} />
@@ -64,11 +69,10 @@ export const LoginPage = () => {
                             type="text"
                             placeholder="Senha"
                             value={senhaLogin}
-                            onChange={(e) => setSenhaLogin(e.target.ariaValueMax)} />
+                            onChange={(e) => setSenhaLogin(e.target.value)} />
                         <button className="continuar"
-                            type="button"
-                            onClick={() =>LoginPage()}
-                            value="Continuar">Continuar
+                            type="submit"
+                        >Continuar
                         </button>
                         <img src={line} alt="line"></img>
                     </div>
