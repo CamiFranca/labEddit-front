@@ -2,6 +2,7 @@ import { goToLoginPage} from "../../routes/coordinator"
 import { HeaderStyled } from "./styled"
 import { useNavigate, useLocation, useParams } from 'react-router-dom'
 import symbol from "../../images/symbol.png"
+import close from "../../images/close.png"
 
 
 export const Header = () => {
@@ -11,15 +12,16 @@ export const Header = () => {
     const navigate = useNavigate()
     const local = useLocation()
 
+    const deleteLogin = ()=>{
+        localStorage.setItem('token',"")
+        goToLoginPage(navigate)
+    }
+
     const buttonHeader = () => {
 
         switch (local.pathname) {
-            case "/":
-                return
-                <div className="void">
-                    
-                </div>
-            case "/signup":
+          
+            case "/users/signup":
                 return (
               
                     <div className='all-header'>
@@ -32,7 +34,7 @@ export const Header = () => {
                         </div>
 
                         <div className='button'>
-                            <a onClick={() => goToLoginPage(navigate)}><h3>Logout</h3></a>
+                            <a onClick={() => deleteLogin() }><h3>Logout</h3></a>
                         </div>
 
                     </div>
@@ -52,12 +54,12 @@ export const Header = () => {
                             </div>
                             
                             <div className='button'>
-                                <a onClick={() => goToLoginPage(navigate)}><h2>Logout</h2></a>
+                                <a onClick={() => deleteLogin()}><h2>Logout</h2></a>
                             </div>
                         </div>
                     )
 
-            case "/comments/id":
+            case `/comments/${params.id}`:
                 return (
                     <div className='all-header'>
                         <div className='void'>
@@ -68,7 +70,7 @@ export const Header = () => {
                         </div>
 
                         <div className='button'>
-                            <button onClick={() => goToLoginPage(navigate)}><h2>Logout</h2></button>
+                            <button onClick={() => deleteLogin()}><img src={close} alt="close page"></img></button>
                         </div>
                     </div>
                 )
@@ -76,7 +78,7 @@ export const Header = () => {
             default:
                 return (
                     <div className='button'>
-                        <button onClick={() => goToLoginPage(navigate)}><h2> Voltar para página inicial</h2></button>
+                        <button onClick={() => deleteLogin()}><h2> Voltar para página inicial</h2></button>
                     </div>
                 )
         }

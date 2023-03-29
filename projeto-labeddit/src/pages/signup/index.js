@@ -16,33 +16,38 @@ export const SignupPage = () => {
 
     const [apelido, setApelido] = useState("")
     const [email, setEmail] = useState("")
-    const [senha, setSenha] = useState("")
-    const [token, setToken] = useState("")
+    const [password, setPassword] = useState("")
 
-    useEffect(() => {
-
-        signup()
-
-    }, [])
+    // useEffect(() => {
+    //     // Verifica se o usuário já está logado
+    //     const token = localStorage.getItem("token")
+    //     if (token) {
+    //       setToken(true)
+    //       goToPostsPage(navigate)
+    //     }
+    //   }, [])
 
     const input = {
-        nickName: apelido,
-        email: email,
-        senha: senha
+        "nickName": apelido,
+        "email": email,
+        "password": password
 
     }
     const signup = () => {
 
-        axios.post(`${BASE_URL}/users/login`, input)
+        axios.post(`${BASE_URL}/users/signup`, input)
 
             .then((res) => {
-                setToken(res.data.token)
-                localStorage.setItem("token", token)
-                token ? goToPostsPage(navigate) : goToLoginPage(navigate)
+                localStorage.setItem("token", res.data.token)
+                goToPostsPage(navigate) 
             })
             .catch((err) => {
                 console.log(err)
             })
+    }
+    const handleSubmit = (event) => {
+        event.preventDefault()
+        signup()
     }
 
     return (
@@ -51,7 +56,7 @@ export const SignupPage = () => {
 
                 <h1 className="title">Olá, boas vindas ao <br /> LabEddit ;)</h1>
 
-                <form className="form">
+                <form className="form" onSubmit={handleSubmit}>
                     <div className="inputs">
                         <input name="apelido"
                             type="text"
@@ -60,14 +65,14 @@ export const SignupPage = () => {
                             onChange={(e) => setApelido(e.target.value)} />
                         <input name="senha"
                             type="text"
-                            value={senha}
+                            value={email}
                             placeholder="E-mail"
-                            onChange={(e) => setSenha(e.target.value)} />
+                            onChange={(e) => setEmail(e.target.value)} />
                         <input name="email"
                             type="text"
-                            value={email}
+                            value={password}
                             placeholder="Senha"
-                            onChange={(e) => setEmail(e.target.value)} />
+                            onChange={(e) => setPassword(e.target.value)} />
 
                     </div>
                     <div className="contract">
@@ -79,7 +84,10 @@ export const SignupPage = () => {
                             e nossa <a href="https://www.homehost.com.br/">Politica de privacidade</a></p>
                         <p>Eu concordo em receber emails sobre coisas legais <br /> no labEddit</p>
                     </div>
-                    <button className="continuar" type="submit" value="Continuar">Cadastrar</button>
+                    <button className="continuar"
+                        type="submit"
+                        value="Continuar">
+                        Cadastrar</button>
                 </form>
 
 

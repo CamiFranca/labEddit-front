@@ -2,7 +2,7 @@ export const goToLoginPage = (navigate)=>{
     navigate('/')
 }
 export const goToSignupPage = (navigate)=>{
-    navigate('/signup')
+    navigate('users/signup')
 }
 export const goToCommentsPage = (navigate,id)=>{
     navigate(`/comments/${id}`)

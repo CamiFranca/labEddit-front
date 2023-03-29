@@ -23,12 +23,10 @@ export const LoginPage = () => {
         "password": senhaLogin
     }
 
-    useEffect(() => {
 
       
     }, [])
 
-   
     const login = () => {
 
         axios.post(`${BASE_URL}/users/login`, input)
@@ -71,7 +69,7 @@ export const LoginPage = () => {
                             value={senhaLogin}
                             onChange={(e) => setSenhaLogin(e.target.value)} />
                         <button className="continuar"
-                            type="submit" 
+
                         >Continuar
                         </button>
                         <img src={line} alt="line"></img>

@@ -1,14 +1,6 @@
 import { PostStyledPage } from "./styled"
 import line from "../../images/line.png"
-import { useEffect, useState } from "react"
-import { BASE_URL } from "../../constants"
-import axios from "axios"
 
-export const PostsPage = () => {
-
-    const [posts, setPosts] = useState([])
-    const[createPost,setCreatePost] = useState('')
-    const [contentPost, setContentPost] = useState('')
 
     useEffect(() => {
 
@@ -72,32 +64,11 @@ export const PostsPage = () => {
         <PostStyledPage>
             <textarea name='content'
                 placeholder='Escreva seu post...'
-                minlength="50" maxlength="255"
-                value={contentPost}
-                onChange={(e)=>setContentPost(e.target.value)}
-                >
-                
-            </textarea>
-            <button className="continuar"
-                type="button"
-                value="Continuar"
-                onClick={postagem}>Postar
-                
-            </button>
-            <img src={line} alt="line"></img>
-            {posts.map((post)=>{
-                return(
-                    <>
-                    <p>{post.creatorNickName}</p>
-                    <p>{post.content}</p>
-                    </>
-                )
-            })}
 
-        
-            
-            
-          
+            </textarea>
+            <button className="postar"
+                type="button"
+
         </PostStyledPage>
     )
 

@@ -8,6 +8,7 @@ export const HeaderStyled = styled.div`
     flex-direction:row;
     align-items:center;
     justify-content:center;
+    overflow:hidden;
 
 .all-header{
     display:flex;
@@ -32,6 +33,9 @@ export const HeaderStyled = styled.div`
     color:#4088CB;
     cursor:pointer;
     font-weight:bold;
+   }
+a{
+cursor:pointer;
    }
 }
 `
