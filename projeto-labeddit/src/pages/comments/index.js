@@ -231,7 +231,7 @@ export const CommentsPage = () => {
                                     <img src={upArrow} alt="up arrow" className="up"></img></button>
                                 <span className="number">{comment.likes}</span>
 
-                                <button onClick={() =>likeOrDislikeComment(comment.id, false)}>
+                                <button onClick={() => likeOrDislikeComment(comment.id, false)}>
                                     <img src={downArrow} alt="down arrow" className="down"></img></button>
                                 <span className="number">{comment.dislikes}</span>
                             </div>

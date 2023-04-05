@@ -24,9 +24,6 @@ export const LoginPage = () => {
     }
 
 
-      
-    }, [])
-
     const login = () => {
 
         axios.post(`${BASE_URL}/users/login`, input)
@@ -86,5 +83,5 @@ export const LoginPage = () => {
             </div>
         </HomeStyled>
     )
+ }
 
-}
