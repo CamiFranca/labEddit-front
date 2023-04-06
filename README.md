@@ -8,7 +8,7 @@ O design do projeto seguiu um modelo mobile first do Figma, :  [Clique aqui](htt
 Crie repositórios pessoais separados para o front e para o back, pois facilita o processo de deploy.
 
 ## Links de acesso:
-* Visualize o site: [Clique aqui!](projeto-labeddit-fullstack-camilla-franca.surge.sh)
+* Visualize o site: [Clique aqui!](https://projeto-labeddit-fullstack-camilla-franca.surge.sh/)
 * Veja a documentação do projeto Labeddit-Back-end: [Clique aqui!](https://documenter.getpostman.com/view/24460722/2s93RZKoiY)
 * Acesso ao repositório Labeddit-Back-End: [Clique aqui!](https://github.com/CamiFranca/projeto-labEddit)
 
