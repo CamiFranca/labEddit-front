@@ -20,6 +20,23 @@ export const Header = () => {
     const buttonHeader = () => {
 
         switch (local.pathname) {
+            case "/":
+                return (
+              
+                    <div className='all-header'>
+                        <div className='void'>
+
+                        </div>
+
+                        <div className='image'>
+                        </div>
+
+                        <div className='button'>
+                        </div>
+
+                    </div>
+              
+                )
           
             case "/users/signup":
                 return (
