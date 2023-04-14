@@ -13,8 +13,8 @@ export const Router = ()=>{
         <Header/>
         <Routes>
             <Route path="/" element={<LoginPage/>}/>
-
             <Route path="/posts" element={<PostsPage/>}/>
+            <Route path="users/signup" element={<SignupPage/>}/>
             <Route path="/comments/:id" element={<CommentsPage/>}/>
         </Routes>
         </BrowserRouter>
